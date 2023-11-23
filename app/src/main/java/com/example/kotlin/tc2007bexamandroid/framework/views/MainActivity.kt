@@ -4,42 +4,36 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.kotlin.tc2007bexamandroid.databinding.ActivityMainBinding
+import com.example.kotlin.tc2007bexamandroid.framework.adapters.CountryAdapter
+import com.example.kotlin.tc2007bexamandroid.framework.viewmodels.MainViewModel
 
-class MainActivity {
-    class MainActivity: AppCompatActivity() {
-        private lateinit var binding: ActivityMainBinding
-        private val adapter : MovieAdapter = MovieAdapter() //Change
-        private lateinit var data:ArrayList<Movie>
-        private val viewModel: MainViewModel by viewModels()
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
+class MainActivity: AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private val adapter: CountryAdapter = CountryAdapter(listOf()) // Ajustado a CountryAdapter
+    private val viewModel: MainViewModel by viewModels()
 
-            initializeBinding()
-            initializeObservers()
-            viewModel.getMovieList()
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-        private fun initializeBinding() {
-            binding = ActivityMainBinding.inflate(layoutInflater)
-            setContentView(binding.root)
-        }
-
-        private fun setUpRecyclerView(dataForList: List<Result>) {
-            binding.RVMovie.setHasFixedSize(true)
-
-            val gridLayoutManager = GridLayoutManager(this, 2)
-            binding.RVMovie.layoutManager = gridLayoutManager
-
-            adapter.MovieAdapter(dataForList, this)
-            binding.RVMovie.adapter = adapter
-        }
-
-        private fun initializeObservers(){
-            viewModel.movieLiveData.observe(this){ movie ->
-                setUpRecyclerView(movie.results)
-            }
-        }
+        initializeBinding()
+        initializeObservers()
+        viewModel.getCountryData("2023-03-10") // Ejemplo de fecha
     }
 
+    private fun initializeBinding() {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.RVCountry.setHasFixedSize(true)
+        binding.RVCountry.layoutManager = GridLayoutManager(this, 2)
+        binding.RVCountry.adapter = adapter
+    }
+
+    private fun initializeObservers() {
+        viewModel.countriesLiveData.observe(this) { countries ->
+            adapter.updateCountries(countries)
+        }
+    }
 }
