@@ -1,2 +1,6 @@
 # TC2007B-Android-Examen
- Iván Rodríguez Cuevas - A01781284
+
+Nombre: Iván Rodríguez Cuevas
+Matrícula: A01781284
+
+Plataforma: Android
