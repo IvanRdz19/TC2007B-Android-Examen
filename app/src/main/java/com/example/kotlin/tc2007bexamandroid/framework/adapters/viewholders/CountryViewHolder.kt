@@ -18,11 +18,13 @@ import kotlinx.coroutines.launch
 
 class CountryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val countryNameTextView: TextView = itemView.findViewById(R.id.TVCountry)
+    private val countryRegionTextView: TextView = itemView.findViewById(R.id.TVRegion)
     private val casesTotalTextView: TextView = itemView.findViewById(R.id.TVTotalCases)
     private val casesNewTextView: TextView = itemView.findViewById(R.id.TVNewCases)
 
     fun bind(country: Country) {
         countryNameTextView.text = country.country
+        countryRegionTextView.text = country.region
         casesTotalTextView.text = "Total cases: ${country.cases.total}"
         casesNewTextView.text = "New cases: ${country.cases.new}"
     }
