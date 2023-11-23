@@ -19,7 +19,7 @@ class MainActivity: AppCompatActivity() {
 
         initializeBinding()
         initializeObservers()
-        viewModel.getCountryData("2023-03-10") // Ejemplo de fecha
+        viewModel.getCountryData("2022-03-10") // Ejemplo de fecha
     }
 
     private fun initializeBinding() {
