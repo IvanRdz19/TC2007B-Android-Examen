@@ -9,6 +9,6 @@ class CountryRepository {
     // Añade un parámetro de fecha al método.
     suspend fun getCountryList(date: String): List<Country>? {
         // Pasa la fecha al método del cliente de la API.
-        return apiCountry.getCountryList(date)
+        return apiCountry.getCountryListByDate(date)
     }
 }
