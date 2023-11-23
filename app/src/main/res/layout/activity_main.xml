@@ -13,7 +13,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginTop="8dp"
-        android:text="COVID-19 Cases"
+        android:text="COVID-19 Cases by Day (2021-03-10)"
         android:id="@+id/TVOverview"
         />
 

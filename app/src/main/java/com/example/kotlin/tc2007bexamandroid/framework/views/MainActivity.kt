@@ -7,19 +7,21 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.kotlin.tc2007bexamandroid.databinding.ActivityMainBinding
 import com.example.kotlin.tc2007bexamandroid.framework.adapters.CountryAdapter
 import com.example.kotlin.tc2007bexamandroid.framework.viewmodels.MainViewModel
+import com.example.kotlin.tc2007bexamandroid.framework.viewmodels.MainViewModelFactory
+import com.example.kotlin.tc2007bexamandroid.domain.CountryListRequirement
 
-
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val adapter: CountryAdapter = CountryAdapter(listOf()) // Ajustado a CountryAdapter
-    private val viewModel: MainViewModel by viewModels()
+    private val adapter: CountryAdapter = CountryAdapter(listOf())
+
+    private val viewModel: MainViewModel by viewModels { MainViewModelFactory(CountryListRequirement()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         initializeBinding()
         initializeObservers()
-        viewModel.getCountryData("2022-03-10") // Ejemplo de fecha
+        viewModel.getCountryData("2021-03-10") // Ejemplo de fecha
     }
 
     private fun initializeBinding() {
