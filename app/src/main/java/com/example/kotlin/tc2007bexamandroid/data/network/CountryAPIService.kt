@@ -8,7 +8,7 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface CountryAPIService {
-    @GET("covid19")
+    @GET("covid19") //Get request to get country data by date
     suspend fun getCountryDataByDate(
         @Query("date") date: String,
         @Header("X-Api-Key") apiKey: String
