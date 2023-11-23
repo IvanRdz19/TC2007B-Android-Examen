@@ -15,7 +15,7 @@ class MainViewModel(private val countryListRequirement: CountryListRequirement) 
         viewModelScope.launch(Dispatchers.IO) {
             val result: List<Country>? = countryListRequirement(date)
             launch(Dispatchers.Main) {
-                countriesLiveData.postValue(result)
+                countriesLiveData.postValue(result!!) //mmmm
             }
         }
     }
