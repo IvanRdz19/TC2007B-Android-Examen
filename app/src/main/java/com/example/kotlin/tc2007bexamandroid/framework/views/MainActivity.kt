@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val adapter: CountryAdapter = CountryAdapter(listOf())
 
+    //Initialize the view model with the MainViewModelFactory
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory(CountryListRequirement()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,19 +22,21 @@ class MainActivity : AppCompatActivity() {
 
         initializeBinding()
         initializeObservers()
-        viewModel.getCountryData("2021-03-10") // Hardcoded date, should be dynamic
+        //Fetch country data (Note: this should be done dynamic)
+        viewModel.getCountryData("2021-03-10") // Hardcoded date
     }
 
     private fun initializeBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        //Configure RecyclerView
         binding.RVCountry.setHasFixedSize(true)
         binding.RVCountry.layoutManager = GridLayoutManager(this, 2)
         binding.RVCountry.adapter = adapter
     }
 
     private fun initializeObservers() {
+        //Observe the countriesLiveData and update the adapter when it changes
         viewModel.countriesLiveData.observe(this) { countries ->
             adapter.updateCountries(countries)
         }

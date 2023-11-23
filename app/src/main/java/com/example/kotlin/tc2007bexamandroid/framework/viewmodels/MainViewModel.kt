@@ -14,16 +14,16 @@ class MainViewModel(private val countryListRequirement: CountryListRequirement) 
     fun getCountryData(date: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val result: List<Country>? = countryListRequirement(date)
+                val result: List<Country>? = countryListRequirement(date) //Fetch country data
                 launch(Dispatchers.Main) {
                     result?.let {
-                        countriesLiveData.postValue(it)
+                        countriesLiveData.postValue(it) //Update the live data
                     } ?: run {
-                        // Manejar el caso en el que result es nulo
+                        // Handle null case
                     }
                 }
             } catch (e: Exception) {
-                // Manejar la excepción
+                // Handle exception
             }
         }
     }
