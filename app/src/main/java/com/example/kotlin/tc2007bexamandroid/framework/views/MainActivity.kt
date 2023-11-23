@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         initializeBinding()
         initializeObservers()
-        viewModel.getCountryData("2021-03-10") // Ejemplo de fecha
+        viewModel.getCountryData("2021-03-10") // Hardcoded date, should be dynamic
     }
 
     private fun initializeBinding() {
