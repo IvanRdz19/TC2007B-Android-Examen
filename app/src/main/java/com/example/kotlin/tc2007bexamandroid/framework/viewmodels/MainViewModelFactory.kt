@@ -8,8 +8,8 @@ class MainViewModelFactory(private val countryListRequirement: CountryListRequir
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return MainViewModel(countryListRequirement) as T
+            return MainViewModel(countryListRequirement) as T //Create instance of MainViewModel
         }
-        throw IllegalArgumentException("Unknown ViewModel class")
+        throw IllegalArgumentException("Unknown ViewModel class") //Exception
     }
 }

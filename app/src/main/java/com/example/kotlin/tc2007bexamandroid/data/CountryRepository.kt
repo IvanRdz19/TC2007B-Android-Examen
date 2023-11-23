@@ -6,9 +6,8 @@ import com.example.kotlin.tc2007bexamandroid.data.network.country.Country
 class CountryRepository {
     private val apiCountry = CountryAPIClient()
 
-    // Añade un parámetro de fecha al método.
+    // Add date parameter to getCountryList method.
     suspend fun getCountryList(date: String): List<Country>? {
-        // Pasa la fecha al método del cliente de la API.
         return apiCountry.getCountryListByDate(date)
     }
 }

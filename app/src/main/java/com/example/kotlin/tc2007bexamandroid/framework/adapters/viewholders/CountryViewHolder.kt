@@ -22,6 +22,7 @@ class CountryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val casesTotalTextView: TextView = itemView.findViewById(R.id.TVTotalCases)
     private val casesNewTextView: TextView = itemView.findViewById(R.id.TVNewCases)
 
+    //Binds data from a Country object to the view in the viewholder
     fun bind(country: Country) {
         countryNameTextView.text = country.country
         countryRegionTextView.text = country.region

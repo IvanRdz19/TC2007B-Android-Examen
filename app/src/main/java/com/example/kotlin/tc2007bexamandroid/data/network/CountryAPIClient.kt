@@ -5,6 +5,7 @@ import com.example.kotlin.tc2007bexamandroid.utils.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+//Class handles the API client for fetching country data
 class CountryAPIClient {
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(Constants.BASE_URL)
@@ -13,6 +14,7 @@ class CountryAPIClient {
 
     private val api: CountryAPIService = retrofit.create(CountryAPIService::class.java)
 
+    // Get all countries of a given date
     suspend fun getCountryListByDate(date: String): List<Country>? {
         return try {
             val response = api.getCountryDataByDate(date, Constants.TOKEN)
